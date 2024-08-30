@@ -1,8 +1,8 @@
-import type { LinksFunction, LoaderFunctionArgs, } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import {
   Form,
-  Link, 
+  Link,
   Links,
   Meta,
   NavLink,
@@ -21,7 +21,6 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-
   return (
     <html lang="en">
       <head>
@@ -34,8 +33,12 @@ export default function App() {
         <div id="sidebar">
           <h1>Phuong's Page</h1>
           <nav>
-          <NavLink className="achievement" to="/">Achievement</NavLink>
-          <NavLink className="about" to="/about">About</NavLink>
+            <NavLink className="achievement" to="/">
+              Achievement
+            </NavLink>
+            <NavLink className="about" to="/about">
+              About
+            </NavLink>
           </nav>
         </div>
         <div id="detail">
