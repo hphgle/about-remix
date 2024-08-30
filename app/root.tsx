@@ -1,12 +1,27 @@
+import type { LinksFunction, LoaderFunctionArgs, } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import {
   Form,
+  Link, 
   Links,
   Meta,
+  NavLink,
+  Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
+  useNavigation,
+  useSubmit,
 } from "@remix-run/react";
+import appStylesHref from "./app.css?url";
+import { createEmptyContact, getContacts } from "./data";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: appStylesHref },
+];
 
 export default function App() {
+
   return (
     <html lang="en">
       <head>
@@ -17,36 +32,15 @@ export default function App() {
       </head>
       <body>
         <div id="sidebar">
-          <h1>Remix Contacts</h1>
-          <div>
-            <Form id="search-form" role="search">
-              <input
-                id="q"
-                aria-label="Search contacts"
-                placeholder="Search"
-                type="search"
-                name="q"
-              />
-              <div id="search-spinner" aria-hidden hidden={true} />
-            </Form>
-            <Form method="post">
-              <button type="submit">New</button>
-            </Form>
-          </div>
+          <h1>Phuong's Page</h1>
           <nav>
-            <ul>
-              <li>
-                <a href={`/contacts/1`}>Your Name</a>
-              </li>
-              <li>
-                <a href={`/contacts/2`}>Your Friend</a>
-              </li>
-            </ul>
+          <NavLink className="achievement" to="/">Achievement</NavLink>
+          <NavLink className="about" to="/about">About</NavLink>
           </nav>
         </div>
-
-        <ScrollRestoration />
-        <Scripts />
+        <div id="detail">
+          <Outlet />
+        </div>
       </body>
     </html>
   );
